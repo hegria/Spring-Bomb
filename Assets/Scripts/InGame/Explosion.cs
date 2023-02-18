@@ -32,7 +32,7 @@ public class Explosion : MonoBehaviour
             else if (collision.tag == "Wood")
             {
                 Debug.Log("BOM");
-                collision.GetComponent<Wood>().OnDestroy();
+                collision.GetComponent<Wood>().OnBoom();
             }
             else if (collision.tag == "Enemy")
             {
