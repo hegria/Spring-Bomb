@@ -10,7 +10,7 @@ GameObject:
   m_Component:
   - component: {fileID: 9071249284380062848}
   - component: {fileID: 9071249284380062851}
-  - component: {fileID: 1793286023134217519}
+  - component: {fileID: 390595123}
   m_Layer: 0
   m_Name: Wood
   m_TagString: Untagged
@@ -86,8 +86,8 @@ SpriteRenderer:
   m_WasSpriteAssigned: 1
   m_MaskInteraction: 0
   m_SpriteSortPoint: 0
---- !u!58 &1793286023134217519
-CircleCollider2D:
+--- !u!61 &390595123
+BoxCollider2D:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
@@ -100,8 +100,18 @@ CircleCollider2D:
   m_UsedByEffector: 0
   m_UsedByComposite: 0
   m_Offset: {x: 0, y: 0}
+  m_SpriteTilingProperty:
+    border: {x: 0, y: 0, z: 0, w: 0}
+    pivot: {x: 0.5, y: 0.5}
+    oldSize: {x: 1, y: 1}
+    newSize: {x: 1, y: 1}
+    adaptiveTilingThreshold: 0.5
+    drawMode: 0
+    adaptiveTiling: 0
+  m_AutoTiling: 0
   serializedVersion: 2
-  m_Radius: 0.50000006
+  m_Size: {x: 1, y: 1}
+  m_EdgeRadius: 0
 --- !u!1 &9071249284889792594
 GameObject:
   m_ObjectHideFlags: 0

@@ -212,37 +212,11 @@ Transform:
   m_CorrespondingSourceObject: {fileID: 1288513332368919790, guid: 31c629495e4345d4aad8c6679e81622d, type: 3}
   m_PrefabInstance: {fileID: 1288513332752677011}
   m_PrefabAsset: {fileID: 0}
---- !u!1 &390595120 stripped
-GameObject:
-  m_CorrespondingSourceObject: {fileID: 9071249284380062850, guid: f63ccaba563d5f244bbfffc71e529f26, type: 3}
-  m_PrefabInstance: {fileID: 9071249284761220786}
-  m_PrefabAsset: {fileID: 0}
 --- !u!4 &390595122 stripped
 Transform:
   m_CorrespondingSourceObject: {fileID: 9071249284380062848, guid: f63ccaba563d5f244bbfffc71e529f26, type: 3}
   m_PrefabInstance: {fileID: 9071249284761220786}
   m_PrefabAsset: {fileID: 0}
---- !u!50 &390595123
-Rigidbody2D:
-  serializedVersion: 4
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 390595120}
-  m_BodyType: 0
-  m_Simulated: 1
-  m_UseFullKinematicContacts: 0
-  m_UseAutoMass: 0
-  m_Mass: 1
-  m_LinearDrag: 0
-  m_AngularDrag: 0.05
-  m_GravityScale: 1
-  m_Material: {fileID: 0}
-  m_Interpolate: 0
-  m_SleepingMode: 1
-  m_CollisionDetection: 0
-  m_Constraints: 0
 --- !u!1 &519420028
 GameObject:
   m_ObjectHideFlags: 0
@@ -925,6 +899,5 @@ PrefabInstance:
       propertyPath: m_Name
       value: Wood
       objectReference: {fileID: 0}
-    m_RemovedComponents:
-    - {fileID: 1793286023134217519, guid: f63ccaba563d5f244bbfffc71e529f26, type: 3}
+    m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: f63ccaba563d5f244bbfffc71e529f26, type: 3}
