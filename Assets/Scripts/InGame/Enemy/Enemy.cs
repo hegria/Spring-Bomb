@@ -19,6 +19,8 @@ public class Enemy : MonoBehaviour
     Vector2 dir;
     SpriteRenderer spr;
 
+    public int EnemyType = 0;
+
     // 스프라이트 변경 이미지
     public Sprite[] Sprite = new Sprite[4];
 
@@ -34,6 +36,7 @@ public class Enemy : MonoBehaviour
     public void Init(int enemytype)
     {
         speed = System.Convert.ToSingle(Managers.Game.UnitInfo[enemytype]["Speed"]) * Character.character.Speed;
+        EnemyType = enemytype;
     }
     void Update()
     {

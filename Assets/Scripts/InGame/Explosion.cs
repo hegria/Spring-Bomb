@@ -31,6 +31,7 @@ public class Explosion : MonoBehaviour
             }
             else if (collision.tag == "Wood")
             {
+                Managers.Game.brokenWood++;
                 Debug.Log("BOM");
                 collision.GetComponent<Wood>().OnBoom();
             }
