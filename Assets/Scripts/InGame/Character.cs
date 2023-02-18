@@ -39,7 +39,9 @@ public class Character : MonoBehaviour
     
     float[] bombCooldown = { 0, 0, 0 };
     float[] RealCooldown = { 0, 0, 0 };
+
     // Start is called before the first frame update
+
     void Start()
     {
         Managers.Input.KeyAction += KeyDown;
@@ -52,8 +54,6 @@ public class Character : MonoBehaviour
     [SerializeField]
     Vector2 inputVec;
     public float Speed = 2f;
-    [SerializeField]
-    bool isThrowing = false;
 
     public bool bombed = false;
     public Bomb nowbomb = null;
@@ -61,8 +61,6 @@ public class Character : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-
-
         inputVec.x = Input.GetAxisRaw("Horizontal");
         inputVec.y = Input.GetAxisRaw("Vertical");
 
@@ -74,7 +72,6 @@ public class Character : MonoBehaviour
     }
     void FixedUpdate()
     {
-
         Vector2 nextVec = inputVec.normalized * Speed * Time.fixedDeltaTime;
         rigid.MovePosition(rigid.position + nextVec);
     }
@@ -94,35 +91,7 @@ public class Character : MonoBehaviour
         else if (Input.GetKeyDown(KeyCode.D))
         {
             GenBomb(3);
-
         }
-
-        if (Input.GetKeyDown(KeyCode.Space))
-        {
-            if (isThrowing)
-            {
-                if (nowbomb == null)
-                {
-                    isThrowing = false;
-
-                }else
-                {
-                    Managers.Sound.Play("Throw");
-                    nowbomb.Thrown(inputVec);
-                    nowbomb = null;
-                    isThrowing = false;
-                }
-            }
-            else
-            {
-                if (!bombed)
-                    return;
-
-                isThrowing = true;
-            }
-
-        }
-
     }
 
     void GenBomb(int bombnum)

@@ -30,11 +30,23 @@ public class Bomb : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
+        Debug.Log(BombTIme);
+
         starttime += Time.deltaTime;
 
         if (starttime > BombTIme)
         {
-            Managers.Sound.Play($"Explosion{Explosionnum}");
+            if (Explosionnum == 1)
+            {
+
+                Managers.Sound.Play($"Explosion{Explosionnum}",volumn:3f);
+            }
+            else
+            {
+                Managers.Sound.Play($"Explosion{Explosionnum}");
+
+            }
+
 
             GameObject go = Managers.Resource.Instantiate($"Explosion/Explosion{Explosionnum}");
             go.GetComponent<Explosion>().Init(Explosionnum);

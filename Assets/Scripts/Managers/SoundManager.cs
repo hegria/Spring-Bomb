@@ -12,7 +12,7 @@ public class SoundManager
     // 관객(귀)     -> AudioListener
 
     float _effectVolumn = 0.6f;
-    float _bgmVolumn = 0.4f;
+    float _bgmVolumn = 0.35f;
 
     public float EffectVolumn
     {

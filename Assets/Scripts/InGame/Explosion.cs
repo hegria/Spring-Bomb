@@ -10,7 +10,7 @@ public class Explosion : MonoBehaviour
     // Start is called before the first frame update
     void Start()
     {
-        Invoke("Imdead", 1.0f);
+        //Invoke("Imdead", 1.0f);
     }
 
     
