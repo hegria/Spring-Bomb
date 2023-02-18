@@ -69,7 +69,7 @@ public class GameScene : BaseScene
 
             go.transform.position = new Vector3(Point.x, Point.y);
 
-            yield return new WaitUntil(() => Managers.Game.brokenWood >= nowbroke + System.Convert.ToSingle(Managers.Game.UnitInfo[enemynum]["Spawn"]));
+            yield return new WaitUntil(() => Managers.Game.brokenWood >= nowbroke + System.Convert.ToSingle(Managers.Game.UnitInfo[enemynum]["Term"]));
         }
     }
 
