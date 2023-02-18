@@ -4,26 +4,31 @@ using UnityEngine;
 
 public class Wood : MonoBehaviour
 {
-    // Start is called before the first frame update
+    protected BoxCollider2D col;
+    protected SpriteRenderer spr;
+    public Sprite[] img = new Sprite[2];
+    
+    
 
-    [SerializeField]
-
+    void Awake()
+    {
+        col = GetComponent<BoxCollider2D>();
+        spr = GetComponent<SpriteRenderer>();
+    }
 
     void Start()
     {
-        
+        spr.sprite = img[0];
     }
-
-    // Update is called once per frame
-    void Update()
+    public virtual void OnBoom()
     {
-        
+        col.enabled = false;
+        spr.sprite = img[1];
     }
 
     public void OnDestroy()
     {
-        OnDead();
+        Destroy(gameObject);
     }
 
-    public virtual void OnDead() { }
 }

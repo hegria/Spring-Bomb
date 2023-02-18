@@ -18,9 +18,9 @@ public class Enemy : MonoBehaviour
     State EnemyState;
     Vector2 dir;
     SpriteRenderer spr;
-    
+
     // 스프라이트 변경 이미지
-    public Sprite[]  Sprite = new Sprite[4];
+    public Sprite[] Sprite = new Sprite[4];
 
     [SerializeField]
     float speed = 0.5f;
@@ -29,8 +29,6 @@ public class Enemy : MonoBehaviour
         rigidbody = GetComponent<Rigidbody2D>();
         EnemyState = State.Normal;
         spr = GetComponent<SpriteRenderer>();
-
-        StartCoroutine("StateMachine");
     }
     void Update()
     {
@@ -46,44 +44,51 @@ public class Enemy : MonoBehaviour
     public void KnockBack(Transform target, float knockBackPower, float sturnTime)
     {
         EnemyState = State.KnockBack;
+        //spr.sprite = Sprite[1];
         rigidbody.AddForce((target.position - transform.position).normalized * knockBackPower * Time.deltaTime);
         Invoke("SetNormal", sturnTime);
     }
-    
-    void SetNormal()
+    public void ChestNut(float ChestNutTime)
     {
+        EnemyState = State.ChestNut;
+        //spr.sprite = Sprite[2];
+        Invoke("SetNormal", ChestNutTime);
+    }
+    public void Ginko(float slow)
+    {
+        //spr.sprite = Sprite[3];
+        speed *= slow;
+    }
+
+
+    public void SetNormal()
+    {
+        //spr.sprite = Sprite[0];
         EnemyState = State.Normal;
     }
 
-    IEnumerator StateMachine()
+    void StateMachine()
     {
-        while(true)
+
+        if (EnemyState == State.KnockBack)
         {
-            yield return new WaitForSeconds(0.1f);
 
-            if(EnemyState == State.KnockBack)
-            {
-                //spr.sprite = Sprite[1];
+        }
+        else if (EnemyState == State.ChestNut)
+        {
+            rigidbody.velocity = rigidbody.velocity;
 
-            }
-            else if(EnemyState == State.ChestNut)
-            {
-                //spr.sprite = Sprite[2];
+        }
+        else if (EnemyState == State.Ginko)
+        {
 
-            }
-            else if (EnemyState == State.Ginko)
-            {
-                //spr.sprite = Sprite[3];
-
-            }
-            else
-            {
-                //spr.sprite = Sprite[0];
-                dir = Character.character.transform.position - transform.position;
-                dir.Normalize();
-                rigidbody.MovePosition(rigidbody.position + speed * dir * Time.fixedDeltaTime);
-                rigidbody.velocity = Vector2.zero;
-            }
+        }
+        else
+        {
+            dir = Character.character.transform.position - transform.position;
+            dir.Normalize();
+            rigidbody.MovePosition(rigidbody.position + speed * dir * Time.fixedDeltaTime);
+            rigidbody.velocity = Vector2.zero;
         }
     }
 
