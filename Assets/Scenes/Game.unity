@@ -1443,6 +1443,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   genRadius: 10
+  BGMnum: 1
 --- !u!4 &495480824
 Transform:
   m_ObjectHideFlags: 0

@@ -20,10 +20,11 @@ public class Bomb : MonoBehaviour
         
     }
 
-    void Init(int bombnum)
+
+    public void Init(int explosionnum)
     {
-        
-        BombTIme = System.Convert.ToSingle(Managers.Game.BombInfo[bombnum - 1]["ReadyTime"]);
+        Explosionnum = explosionnum;
+        BombTIme = System.Convert.ToSingle(Managers.Game.BombInfo[Explosionnum - 1]["ReadyTime"]);
     }
 
     // Update is called once per frame
@@ -33,7 +34,10 @@ public class Bomb : MonoBehaviour
 
         if (starttime > BombTIme)
         {
+            Managers.Sound.Play($"Explosion{Explosionnum}");
+
             GameObject go = Managers.Resource.Instantiate($"Explosion/Explosion{Explosionnum}");
+            go.GetComponent<Explosion>().Init(Explosionnum);
             go.transform.position = transform.position;
             Destroy(gameObject);
         }

@@ -74,8 +74,6 @@ public class Character : MonoBehaviour
     }
     void FixedUpdate()
     {
-        if (isThrowing)
-            return;
 
         Vector2 nextVec = inputVec.normalized * Speed * Time.fixedDeltaTime;
         rigid.MovePosition(rigid.position + nextVec);
@@ -108,7 +106,8 @@ public class Character : MonoBehaviour
                     isThrowing = false;
 
                 }else
-                { 
+                {
+                    Managers.Sound.Play("Throw");
                     nowbomb.Thrown(inputVec);
                     nowbomb = null;
                     isThrowing = false;
@@ -133,8 +132,9 @@ public class Character : MonoBehaviour
 
         if (bombCooldown[bombnum-1] == 0)
         {
-
+            Managers.Sound.Play($"Launch{bombnum}");
             GameObject bomb = Managers.Resource.Instantiate($"Bomb/Bomb{bombnum}", Managers.Game.Bombs.transform);
+            bomb.GetComponent<Bomb>().Init(bombnum);
             bomb.transform.position = transform.position;
             bombed = true;
             nowbomb = bomb.GetComponent<Bomb>();
