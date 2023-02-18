@@ -11,7 +11,14 @@ public class ChestNut : Wood
     {
         base.OnBoom();
 
+        StartCoroutine("NutCreate");
+        
+    }
+    IEnumerator NutCreate()
+    {
         int i = 0;
+
+
         while (i < nutCount)
         {
             float nutPoX = Random.Range(transform.position.x - 10f, transform.position.x + 10f);
@@ -22,6 +29,7 @@ public class ChestNut : Wood
                 Managers.Resource.Instantiate("Wood/Nut");
                 ++nutCount;
             }
+            yield return new WaitForSeconds(0.1f);
         }
     }
     // Start is called before the first frame update
