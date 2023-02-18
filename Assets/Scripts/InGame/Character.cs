@@ -30,13 +30,14 @@ public class Character : MonoBehaviour
             Destroy(this.gameObject);
         }
     }
-
-
-float[] bombCooldown = { 0, 0, 0 };
+    public Rigidbody2D rigid;
+    
+    float[] bombCooldown = { 0, 0, 0 };
     // Start is called before the first frame update
     void Start()
     {
         Managers.Input.KeyAction += KeyDown;
+        rigid = GetComponent<Rigidbody2D>();
     }
 
     // Update is called once per frame

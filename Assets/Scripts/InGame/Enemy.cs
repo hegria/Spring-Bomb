@@ -18,6 +18,10 @@ public class Enemy : MonoBehaviour
     // Update is called once per frame
     void FixedUpdate()
     {
-        rigidbody.AddForce(speed * (Character.character.transform.position - transform.position),ForceMode2D.Impulse);
+        Vector2 dir = Character.character.transform.position - transform.position;
+        dir.Normalize();
+
+        rigidbody.MovePosition(rigidbody.position + speed * dir * Time.fixedDeltaTime);
+        rigidbody.velocity = Vector2.zero;  
     }
 }
