@@ -1,11 +1,38 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.TextCore.Text;
 
 public class Character : MonoBehaviour
 {
+    private static Character _character = null;
 
-    float[] bombCooldown = { 0, 0, 0 };
+    public static Character character
+    {
+        get
+        {
+            if (null == _character)
+            {
+                return null;
+            }
+    
+            return _character;
+        }
+    }
+    void Awake()
+    {
+        if (null == _character)
+        {
+            _character = this;
+        }
+        else
+        {
+            Destroy(this.gameObject);
+        }
+    }
+
+
+float[] bombCooldown = { 0, 0, 0 };
     // Start is called before the first frame update
     void Start()
     {
