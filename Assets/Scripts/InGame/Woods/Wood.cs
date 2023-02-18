@@ -12,6 +12,8 @@ public class Wood : MonoBehaviour
 
     void Awake()
     {
+        transform.position += new Vector3(Random.Range(-0.1f, 0.1f), Random.Range(-0.1f, 0.1f));
+
         col = GetComponent<BoxCollider2D>();
         spr = GetComponent<SpriteRenderer>();
     }

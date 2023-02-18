@@ -104,11 +104,15 @@ public class Character : MonoBehaviour
             if (isThrowing)
             {
                 if (nowbomb == null)
+                {
                     isThrowing = false;
 
-                nowbomb.Thrown(inputVec);
-                nowbomb = null;
-                isThrowing = false;
+                }else
+                { 
+                    nowbomb.Thrown(inputVec);
+                    nowbomb = null;
+                    isThrowing = false;
+                }
             }
             else
             {

@@ -10,6 +10,13 @@ public class Explosion : MonoBehaviour
     // Start is called before the first frame update
     void Start()
     {
+        Invoke("Imdead", 1.0f);
+    }
+
+    
+
+    public void Init(int Explosionnum)
+    {
         
     }
 
@@ -32,6 +39,11 @@ public class Explosion : MonoBehaviour
                 collision.GetComponent<Enemy>().KnockBack(transform, knockBackPower, sturnTime);
             }
         }
+    }
+
+    public void Imdead()
+    {
+        Destroy(gameObject);
     }
 
     void Update()
