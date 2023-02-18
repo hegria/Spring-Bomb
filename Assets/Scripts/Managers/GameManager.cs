@@ -2,7 +2,6 @@ using System;
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
-using UnityEngine.SceneManagement;
 
 public class GameManager
 {
@@ -13,10 +12,15 @@ public class GameManager
     public GameObject Enemys;
     public GameObject Bombs;
 
-    int Woodnum;
-    int Enemynum;
+    public int Woodnum;
+    public int Enemynum;
 
-    int brokenWood;
+    public int brokenWood;
+
+
+    public List<Dictionary<string,object>> UnitInfo;
+    public List<Dictionary<string,object>> BombInfo;
+    public List<Dictionary<string,object>> TreeInfo;
 
     public void Init()
     {
@@ -29,22 +33,10 @@ public class GameManager
 
         Woodnum = 0;
         Enemynum = 0;
-    }
-
-    IEnumerator GenEnemy1()
-    {
-        yield return new WaitUntil(() => Woodnum > 20);
-    }
-
-    IEnumerator GenEnemy2()
-    {
-        yield return new WaitUntil(() => Woodnum > 30);
-    }
-    IEnumerator GenEnemy3()
-    {
-        yield return new WaitUntil(() => Woodnum > 50);
-    }
-
+        UnitInfo = CSVReader.Read("Unit");
+        BombInfo = CSVReader.Read("Bomb");
+        TreeInfo = CSVReader.Read("Tree");
+}
     public void OnUpdate()
     {
 

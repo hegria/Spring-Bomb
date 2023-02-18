@@ -17,6 +17,13 @@ public class Bomb : MonoBehaviour
     void Start()
     {
         starttime = 0;
+        
+    }
+
+    void Init(int bombnum)
+    {
+        
+        BombTIme = System.Convert.ToSingle(Managers.Game.BombInfo[bombnum - 1]["ReadyTime"]);
     }
 
     // Update is called once per frame

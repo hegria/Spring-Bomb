@@ -8,6 +8,8 @@ public class Character : MonoBehaviour
 {
     private static Character _character = null;
 
+    
+
     public static Character character
     {
         get
@@ -30,16 +32,21 @@ public class Character : MonoBehaviour
         {
             Destroy(this.gameObject);
         }
+        
+        
     }
     public Rigidbody2D rigid;
     
     float[] bombCooldown = { 0, 0, 0 };
-    float[] RealCooldown = { 1, 5, 10 };
+    float[] RealCooldown = { 0, 0, 0 };
     // Start is called before the first frame update
     void Start()
     {
         Managers.Input.KeyAction += KeyDown;
         rigid = GetComponent<Rigidbody2D>();
+        RealCooldown[0] = System.Convert.ToSingle(Managers.Game.BombInfo[0]["Cooldown"]);
+        RealCooldown[1] = System.Convert.ToSingle(Managers.Game.BombInfo[1]["Cooldown"]);
+        RealCooldown[2] = System.Convert.ToSingle(Managers.Game.BombInfo[2]["Cooldown"]);
     }
 
     [SerializeField]
@@ -78,21 +85,17 @@ public class Character : MonoBehaviour
 
     void KeyDown()
     {
-        Debug.Log("fuck");
         if (Input.GetKeyDown(KeyCode.A))
         {
-            Debug.Log("fuck1");
             GenBomb(1);
         }
         else if (Input.GetKeyDown(KeyCode.S))
         {
-            Debug.Log("fuck12");
             GenBomb(2);
 
         }
         else if (Input.GetKeyDown(KeyCode.D))
         {
-            Debug.Log("fuck13");
             GenBomb(3);
 
         }
