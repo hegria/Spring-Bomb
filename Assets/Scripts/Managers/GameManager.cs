@@ -8,13 +8,15 @@ public class GameManager
 {
     float Score = 0;
 
-    GameObject Grounds;
-    GameObject Woods;
-    GameObject Enemys;
-    GameObject Bombs;
+    public GameObject Grounds;
+    public GameObject Woods;
+    public GameObject Enemys;
+    public GameObject Bombs;
 
     int Woodnum;
     int Enemynum;
+
+    int brokenWood;
 
     public void Init()
     {
@@ -27,6 +29,20 @@ public class GameManager
 
         Woodnum = 0;
         Enemynum = 0;
+    }
+
+    IEnumerator GenEnemy1()
+    {
+        yield return new WaitUntil(() => Woodnum > 20);
+    }
+
+    IEnumerator GenEnemy2()
+    {
+        yield return new WaitUntil(() => Woodnum > 30);
+    }
+    IEnumerator GenEnemy3()
+    {
+        yield return new WaitUntil(() => Woodnum > 50);
     }
 
     public void OnUpdate()

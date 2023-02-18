@@ -1,3 +1,4 @@
+using System;
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
@@ -41,53 +42,79 @@ public class Character : MonoBehaviour
         rigid = GetComponent<Rigidbody2D>();
     }
 
+    [SerializeField]
     Vector2 inputVec;
     [SerializeField]
     float speed;
 
-    bool isThrowing;
+    bool isThrowing = false;
+
+    public bool bombed = false;
+    public Bomb nowbomb = null;
 
     // Update is called once per frame
     void Update()
     {
+
+
         inputVec.x = Input.GetAxisRaw("Horizontal");
         inputVec.y = Input.GetAxisRaw("Vertical");
 
         for (int i = 0; i < 3; i++)
         {
-            bombCooldown[i] = Mathf.Min(bombCooldown[i] - Time.deltaTime, 0);
+            bombCooldown[i] = Mathf.Max(bombCooldown[i] - Time.deltaTime, 0);
         }
         Camera.main.transform.position = new Vector3(transform.position.x, transform.position.y, -10);
     }
     void FixedUpdate()
     {
+        if (isThrowing)
+            return;
+
         Vector2 nextVec = inputVec.normalized * speed * Time.fixedDeltaTime;
         rigid.MovePosition(rigid.position + nextVec);
     }
 
-    public bool bombed = false;
 
     void KeyDown()
     {
+        Debug.Log("fuck");
         if (Input.GetKeyDown(KeyCode.A))
         {
+            Debug.Log("fuck1");
             GenBomb(1);
         }
         else if (Input.GetKeyDown(KeyCode.S))
         {
+            Debug.Log("fuck12");
             GenBomb(2);
 
         }
         else if (Input.GetKeyDown(KeyCode.D))
         {
+            Debug.Log("fuck13");
             GenBomb(3);
 
         }
 
         if (Input.GetKeyDown(KeyCode.Space))
         {
-            if (!bombed)
-                return;
+            if (isThrowing)
+            {
+                if (nowbomb == null)
+                    isThrowing = false;
+
+                nowbomb.Thrown(inputVec);
+                nowbomb = null;
+                isThrowing = false;
+            }
+            else
+            {
+                if (!bombed)
+                    return;
+
+                isThrowing = true;
+            }
 
         }
 
@@ -98,8 +125,16 @@ public class Character : MonoBehaviour
         if (bombed)
             return;
 
-        Managers.Resource.Instantiate($"Bomb/Bomb{bombnum}");
+        if (bombCooldown[bombnum-1] == 0)
+        {
 
-        bombed = true;
+            GameObject bomb = Managers.Resource.Instantiate($"Bomb/Bomb{bombnum}", Managers.Game.Bombs.transform);
+            bomb.transform.position = transform.position;
+            bombed = true;
+            nowbomb = bomb.GetComponent<Bomb>();
+
+            bombCooldown[bombnum - 1] = RealCooldown[bombnum - 1];
+        }
+
     }
 }

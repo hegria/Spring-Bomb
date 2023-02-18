@@ -11,6 +11,8 @@ public class Bomb : MonoBehaviour
     
     float starttime  = 0.0f;
 
+    float Force = 100f;
+
     // Start is called before the first frame update
     void Start()
     {
@@ -24,14 +26,21 @@ public class Bomb : MonoBehaviour
 
         if (starttime > BombTIme)
         {
-            Managers.Resource.Instantiate($"Explosion/Explosion{Explosionnum}");
+            GameObject go = Managers.Resource.Instantiate($"Explosion/Explosion{Explosionnum}");
+            go.transform.position = transform.position;
             Destroy(gameObject);
         }
     }
 
     private void OnTriggerExit2D(Collider2D collision)
     {
-         GetComponent<CircleCollider2D>().isTrigger = false;
+        Character.character.bombed = false;
+        GetComponent<CircleCollider2D>().isTrigger = false;
+    }
+
+    public void Thrown(Vector2 vec)
+    {
+        GetComponent<Rigidbody2D>().AddForce(vec.normalized * Force);
     }
 
 }
