@@ -24,8 +24,14 @@ public class Bomb : MonoBehaviour
 
         if (starttime > BombTIme)
         {
-            Managers.Resource.Instantiate($"Bomb / Bomb{Explosionnum}");
+            Managers.Resource.Instantiate($"Explosion/Explosion{Explosionnum}");
             Destroy(gameObject);
         }
     }
+
+    private void OnTriggerExit2D(Collider2D collision)
+    {
+         GetComponent<CircleCollider2D>().isTrigger = false;
+    }
+
 }
