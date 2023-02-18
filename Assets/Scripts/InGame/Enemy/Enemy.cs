@@ -86,7 +86,7 @@ public class Enemy : MonoBehaviour
         }
         else if (EnemyState == State.ChestNut)
         {
-            rigidbody.velocity = nutVelocity;
+            rigidbody.MovePosition(rigidbody.position + speed * dir * Time.fixedDeltaTime);
         }
         else if (EnemyState == State.Ginko)
         {
