@@ -11,7 +11,7 @@ public class Bomb : MonoBehaviour
     
     float starttime  = 0.0f;
 
-    float Force = 100f;
+    float Force = 300f;
 
     // Start is called before the first frame update
     void Start()

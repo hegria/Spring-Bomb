@@ -51,9 +51,8 @@ public class Character : MonoBehaviour
 
     [SerializeField]
     Vector2 inputVec;
+    public float Speed = 2f;
     [SerializeField]
-    float speed;
-
     bool isThrowing = false;
 
     public bool bombed = false;
@@ -78,7 +77,7 @@ public class Character : MonoBehaviour
         if (isThrowing)
             return;
 
-        Vector2 nextVec = inputVec.normalized * speed * Time.fixedDeltaTime;
+        Vector2 nextVec = inputVec.normalized * Speed * Time.fixedDeltaTime;
         rigid.MovePosition(rigid.position + nextVec);
     }
 

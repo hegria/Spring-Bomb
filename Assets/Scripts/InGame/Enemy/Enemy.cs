@@ -30,6 +30,11 @@ public class Enemy : MonoBehaviour
         EnemyState = State.Normal;
         spr = GetComponent<SpriteRenderer>();
     }
+
+    public void Init(int enemytype)
+    {
+        speed = System.Convert.ToSingle(Managers.Game.UnitInfo[enemytype]["Speed"]) * Character.character.Speed;
+    }
     void Update()
     {
         StateMachine();
