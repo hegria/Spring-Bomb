@@ -4,6 +4,9 @@ using UnityEngine;
 
 public class Explosion : MonoBehaviour
 {
+    public float knockBackPower = 5.0f;
+    public float sturnTime = 0.5f; 
+
     // Start is called before the first frame update
     void Start()
     {
@@ -17,15 +20,15 @@ public class Explosion : MonoBehaviour
         if (collision != null) { 
             if (collision.tag == "Player")
             {
-
+                //collision.GetComponent<Character>().Die();
             }
             else if (collision.tag == "Wood")
             {
-
+                collision.GetComponent<Wood>().OnDestroy();
             }
             else if (collision.tag == "Enemy")
             {
-
+                collision.GetComponent<Enemy>().KnockBack(transform, knockBackPower, sturnTime);
             }
         }
     }
