@@ -18,6 +18,7 @@ public class Enemy : MonoBehaviour
     State EnemyState;
     Vector2 dir;
     SpriteRenderer spr;
+    Vector2 nutVelocity;
 
     // 스프라이트 변경 이미지
     public Sprite[] Sprite = new Sprite[4];
@@ -56,6 +57,7 @@ public class Enemy : MonoBehaviour
     public void ChestNut(float ChestNutTime)
     {
         EnemyState = State.ChestNut;
+        nutVelocity = rigidbody.velocity;
         //spr.sprite = Sprite[2];
         Invoke("SetNormal", ChestNutTime);
     }
@@ -81,8 +83,7 @@ public class Enemy : MonoBehaviour
         }
         else if (EnemyState == State.ChestNut)
         {
-            rigidbody.velocity = rigidbody.velocity;
-
+            rigidbody.velocity = nutVelocity;
         }
         else if (EnemyState == State.Ginko)
         {
