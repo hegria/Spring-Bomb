@@ -2,7 +2,7 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-enum State
+public enum State
 {
     Normal,
     Ginko,
@@ -15,7 +15,33 @@ public class Enemy : MonoBehaviour
     // Start is called before the first frame update
 
     Rigidbody2D rigidbody;
-    State EnemyState;
+
+
+    public State G_EnemyState
+    {
+        get
+        {
+            return EnemyState;
+        }
+        set
+        {
+            switch (value)
+            {
+                case State.Normal:
+                    break;
+                case State.Ginko:
+                    break;
+                case State.ChestNut:
+                    break;
+                case State.KnockBack:
+                    break;
+            }
+
+            EnemyState = value;
+        }
+    }
+
+    State EnemyState = State.Normal;
     Vector2 dir;
     SpriteRenderer spr;
     Vector2 nutVelocity;
@@ -30,7 +56,7 @@ public class Enemy : MonoBehaviour
     void Start()
     {
         rigidbody = GetComponent<Rigidbody2D>();
-        EnemyState = State.Normal;
+        G_EnemyState = State.Normal;
         spr = GetComponent<SpriteRenderer>();
     }
 
@@ -41,18 +67,18 @@ public class Enemy : MonoBehaviour
     }
     void Update()
     {
-        StateMachine();
     }
 
     // Update is called once per frame
     void FixedUpdate()
     {
 
+        StateMachine();
     }
 
     public void KnockBack(Vector3 target, float knockBackPower, float sturnTime)
     {
-        EnemyState = State.KnockBack;
+        G_EnemyState = State.KnockBack;
         //spr.sprite = Sprite[1];
         rigidbody.velocity = Vector2.zero;
         float sturnt = sturnTime;
@@ -64,22 +90,26 @@ public class Enemy : MonoBehaviour
 
     public void ChestNut(float ChestNutTime)
     {
-        EnemyState = State.ChestNut;
+        G_EnemyState = State.ChestNut;
         nutVelocity = rigidbody.velocity;
         //spr.sprite = Sprite[2];
         Invoke("SetNormal", ChestNutTime);
     }
+
+    float slowamt = 0.5f;
+
     public void Ginko(float slow)
     {
+        G_EnemyState = State.Ginko;
         //spr.sprite = Sprite[3];
-        speed *= slow;
+        slowamt = slow;
     }
 
 
     public void SetNormal()
     {
         //spr.sprite = Sprite[0];
-        EnemyState = State.Normal;
+        G_EnemyState = State.Normal;
     }
 
     void StateMachine()
@@ -95,7 +125,10 @@ public class Enemy : MonoBehaviour
         }
         else if (EnemyState == State.Ginko)
         {
-
+            dir = Character.character.transform.position - transform.position;
+            dir.Normalize();
+            rigidbody.MovePosition(rigidbody.position + speed * slowamt * dir * Time.fixedDeltaTime);
+            rigidbody.velocity = Vector2.zero;
         }
         else
         {

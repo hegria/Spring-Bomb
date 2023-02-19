@@ -4,11 +4,38 @@ using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.TextCore.Text;
 
+
+
 public class Character : MonoBehaviour
 {
     private static Character _character = null;
 
-    
+    public State G_PlayerState
+    {
+        get
+        {
+            return PlayerState;
+        }
+        set
+        {
+            switch (value)
+            {
+                case State.Normal:
+                    break;
+                case State.Ginko:
+                    break;
+                case State.ChestNut:
+                    break;
+                case State.KnockBack:
+                    break;
+            }
+
+            PlayerState = value;
+        }
+    }
+
+    State PlayerState = State.Normal;
+
 
     public static Character character
     {
@@ -32,8 +59,6 @@ public class Character : MonoBehaviour
         {
             Destroy(this.gameObject);
         }
-        
-        
     }
     public Rigidbody2D rigid;
     
@@ -58,12 +83,33 @@ public class Character : MonoBehaviour
     public bool bombed = false;
     public Bomb nowbomb = null;
 
+
+    public void SetNormal()
+    {
+        //spr.sprite = Sprite[0];
+        G_PlayerState = State.Normal;
+    }
+
+
     // Update is called once per frame
     void Update()
     {
-        inputVec.x = Input.GetAxisRaw("Horizontal");
-        inputVec.y = Input.GetAxisRaw("Vertical");
 
+
+        switch (PlayerState)
+        {
+            case State.Normal:
+                inputVec.x = Input.GetAxisRaw("Horizontal");
+                inputVec.y = Input.GetAxisRaw("Vertical");
+                break;
+            case State.ChestNut:
+                inputVec.x = Input.GetAxisRaw("Horizontal");
+                inputVec.y = Input.GetAxisRaw("Vertical");
+                break;
+
+            case State.Ginko:
+                break;
+        }
         for (int i = 0; i < 3; i++)
         {
             bombCooldown[i] = Mathf.Max(bombCooldown[i] - Time.deltaTime, 0);
@@ -72,8 +118,25 @@ public class Character : MonoBehaviour
     }
     void FixedUpdate()
     {
-        Vector2 nextVec = inputVec.normalized * Speed * Time.fixedDeltaTime;
-        rigid.MovePosition(rigid.position + nextVec);
+        switch (PlayerState)
+        {
+            case State.Normal:
+                {
+                    Vector2 nextVec = inputVec.normalized * Speed * Time.fixedDeltaTime;
+                    rigid.MovePosition(rigid.position + nextVec);
+                }
+                break;
+            case State.ChestNut:
+                break;
+
+            case State.Ginko:
+                break;
+
+            case State.KnockBack:
+                break;
+        }
+
+
     }
 
 
