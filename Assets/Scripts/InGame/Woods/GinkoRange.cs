@@ -11,6 +11,10 @@ public class GinkoRange : MonoBehaviour
         {
             collision.GetComponent<Enemy>().Ginko(this,slow);
         }
+        if(collision.tag == "Player")
+        {
+            Character.character.Ginko(this,slow);
+        }
     }
     void OnTriggerExit2D(Collider2D collision)
     {
@@ -18,6 +22,10 @@ public class GinkoRange : MonoBehaviour
         {
             Enemy enemy = collision.GetComponent<Enemy>();
             enemy.GinkoOut();
+        }
+        if (collision.tag == "Player")
+        {
+            Character.character.GinkoOut();
         }
     }
 }
