@@ -24,7 +24,7 @@ public class UI_VideoScene : UI_Scene
         Invoke("GotoMainreal", 0.5f);
     }
 
-    private static void GotoMainreal()
+    private void GotoMainreal()
     {
         Managers.Scene.LoadScene(Define.Scene.Game);
     }
