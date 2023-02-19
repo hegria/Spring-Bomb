@@ -10,6 +10,7 @@ public class Nut : MonoBehaviour
         if(collision.tag == "Player")
         {
             //collision.GetComponent<Character>().Nut();
+            Character.character.ChestNut(ChestNutTime);
             Destroy(gameObject);
         }
         else if (collision.tag == "Enemy")

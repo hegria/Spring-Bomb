@@ -101,7 +101,7 @@ CircleCollider2D:
   m_IsTrigger: 1
   m_UsedByEffector: 0
   m_UsedByComposite: 0
-  m_Offset: {x: 0.052855175, y: 2.2676494}
+  m_Offset: {x: 0.052855175, y: 0.31}
   serializedVersion: 2
   m_Radius: 0.94171077
 --- !u!114 &7986776855380895853
@@ -116,8 +116,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 5bb85871e85abea4f9ec2498020be5d6, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  knockBackPower: 5
-  sturnTime: 0.5
 --- !u!50 &2212743000214101729
 Rigidbody2D:
   serializedVersion: 4
