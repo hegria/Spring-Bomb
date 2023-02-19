@@ -23,7 +23,6 @@ public class Character : MonoBehaviour
             {
                 case State.Normal:
                     Managers.Sound.Stop(Define.Sound.Movement);
-
                     GetComponent<Animator>().SetBool("Ginko", false);
                     GetComponent<Animator>().SetBool("Nut", false);
                     break;
@@ -165,7 +164,14 @@ public class Character : MonoBehaviour
         {
             bombCooldown[i] = Mathf.Max(bombCooldown[i] - Time.deltaTime, 0);
         }
-        Camera.main.transform.position = new Vector3(transform.position.x, transform.position.y, -10);
+        
+        //Camera.main.transform.position = new Vector3(transform.position.x, transform.position.y, -10);
+
+        float clampX = Mathf.Clamp(transform.position.x, -53f, 53f);
+        float clampY = Mathf.Clamp(transform.position.y, -35f, 40f);
+
+        Camera.main.transform.position = new Vector3(clampX, clampY, -10);
+
     }
     void FixedUpdate()
     {
@@ -205,6 +211,7 @@ public class Character : MonoBehaviour
                 break;
         }
 
+            
 
     }
 
