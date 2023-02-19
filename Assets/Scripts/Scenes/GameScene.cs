@@ -24,6 +24,8 @@ public class GameScene : BaseScene
         GenEnemyForce(1);
         GenEnemyForce(1);
 
+        Managers.UI.ShowSceneUI<UI_GameScene>();
+
         Managers.Game.Enemy1num = 3;
 
         Managers.Sound.Play($"Main", Define.Sound.Bgm);

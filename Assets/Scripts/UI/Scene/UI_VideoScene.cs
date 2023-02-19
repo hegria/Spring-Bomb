@@ -8,7 +8,7 @@ public class UI_VideoScene : UI_Scene
     
     enum VideoPlayers
     {
-        RawImage;
+        RawImage
     }
 
     public override void Init()

@@ -34,6 +34,20 @@ public class UI_GameScene : UI_Scene
         // Update is called once per frame
     void Update()
     {
+        Get<TextMeshProUGUI>((int)TMPs.Enemy1).SetText(Managers.Game.Enemy1num.ToString());
+        Get<TextMeshProUGUI>((int)TMPs.Enemy2).SetText(Managers.Game.Enemy2num.ToString());
+        Get<TextMeshProUGUI>((int)TMPs.Enemy3).SetText(Managers.Game.Enemy3num.ToString());
+
+        Get<TextMeshProUGUI>((int)TMPs.Wood).SetText(Managers.Game.brokenWood.ToString());
+
+
+        GetImage((int)Images.Boom1).fillAmount = Character.character.bombCooldown[0] /
+        Character.character.RealCooldown[0];
         
+        GetImage((int)Images.Boom2).fillAmount = Character.character.bombCooldown[1] /
+        Character.character.RealCooldown[1];
+
+        GetImage((int)Images.Boom3).fillAmount = Character.character.bombCooldown[2] / Character.character.RealCooldown[2];
+
     }
 }

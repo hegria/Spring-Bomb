@@ -83,8 +83,8 @@ public class Character : MonoBehaviour
     }
     public Rigidbody2D rigid;
     
-    float[] bombCooldown = { 0, 0, 0 };
-    float[] RealCooldown = { 0, 0, 0 };
+    public float[] bombCooldown = { 0, 0, 0 };
+    public float[] RealCooldown = { 0, 0, 0 };
 
     // Start is called before the first frame update
 

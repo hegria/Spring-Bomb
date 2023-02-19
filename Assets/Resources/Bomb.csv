@@ -1,4 +1,4 @@
 Index,Name,ReadyTime,Cooldown
-0,Short,1,1
-1,Middle,2,5
-2,Long,4,10
+0,Short,1,5
+1,Middle,2,1
+2,Long,3,10
