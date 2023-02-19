@@ -138,17 +138,18 @@ public class Enemy : MonoBehaviour
         }
         else if (EnemyState == State.Ginko)
         {
-            if (adj_ginko == null)
-            {
-                G_EnemyState = State.Normal;
-                adj_ginko = null;
-            }
+            
 
 
             dir = Character.character.transform.position - transform.position;
             dir.Normalize();
             rigidbody.MovePosition(rigidbody.position + speed * slowamt * dir * Time.fixedDeltaTime);
             rigidbody.velocity = Vector2.zero;
+            if (adj_ginko == null)
+            {
+                G_EnemyState = State.Normal;
+                adj_ginko = null;
+            }
         }
         else
         {
