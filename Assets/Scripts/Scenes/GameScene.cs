@@ -26,6 +26,16 @@ public class GameScene : BaseScene
 
         Managers.UI.ShowSceneUI<UI_GameScene>();
 
+        if(!Managers.Game.tutorialed)
+        {
+            Managers.UI.ShowSceneUI<UI_TutorialScene>();
+
+        }
+        else
+        {
+            Character.character.isGamePaused = false;
+        }
+
         Managers.Game.Enemy1num = 3;
 
         Managers.Sound.Play($"Main", Define.Sound.Bgm);

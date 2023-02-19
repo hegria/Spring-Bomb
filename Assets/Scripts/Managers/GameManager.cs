@@ -20,6 +20,8 @@ public class GameManager
     public int brokenWood;
 
 
+    public bool tutorialed = false;
+
     public List<Dictionary<string,object>> UnitInfo;
     public List<Dictionary<string,object>> BombInfo;
     public List<Dictionary<string,object>> TreeInfo;

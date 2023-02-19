@@ -27,6 +27,11 @@ public class UI_VideoScene : UI_Scene
     // Update is called once per frame
     void Update()
     {
-        
+        if (Input.GetKeyDown(KeyCode.Space))
+        {
+            Get<VideoPlayer>((int)VideoPlayers.RawImage).loopPointReached -= GotoGame;
+
+            Managers.Scene.LoadScene(Define.Scene.Game);
+        }
     }
 }

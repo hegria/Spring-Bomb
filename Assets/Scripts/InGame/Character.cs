@@ -41,16 +41,16 @@ public class Character : MonoBehaviour
         }
     }
 
-    public bool isGameOver = false;
+    public bool isGamePaused = true;
 
     State PlayerState = State.Normal;
 
     public void GameOver()
     {
         Managers.Sound.Stop(Define.Sound.Bgm);
-        isGameOver = true;
+        isGamePaused = true;
         //TODO
-        Invoke("NextGame", 0.3f);
+        NextGame();
     }
 
     public void NextGame()
@@ -143,7 +143,7 @@ public class Character : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        if (isGameOver)
+        if (isGamePaused)
             return;
 
         switch (PlayerState)
@@ -175,7 +175,7 @@ public class Character : MonoBehaviour
     }
     void FixedUpdate()
     {
-        if (isGameOver)
+        if (isGamePaused)
             return;
 
         switch (PlayerState)

@@ -12,7 +12,7 @@ public class StartScene : BaseScene
     }
 
     public GameObject game;
-
+    bool isStarted = false;
     void StartVideo()
     {
         
@@ -21,8 +21,9 @@ public class StartScene : BaseScene
     // Update is called once per frame
     void Update()
     {
-        if (game.activeSelf &&Input.GetKeyDown(KeyCode.Space))
+        if (!isStarted &&Input.GetKeyDown(KeyCode.Space))
         {
+            isStarted = !isStarted;
             game.SetActive(false);
             Managers.Sound.Stop(Define.Sound.Bgm);
             Managers.UI.ShowSceneUI<UI_VideoScene>();

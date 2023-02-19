@@ -149,7 +149,7 @@ public class Enemy : MonoBehaviour
 
     void StateMachine()
     {
-        if (Character.character.isGameOver)
+        if (Character.character.isGamePaused)
             return;
         if (EnemyState == State.KnockBack)
         {
