@@ -4,11 +4,20 @@ using UnityEngine;
 
 public class GinkoRange : MonoBehaviour
 {
+    public float slow = 0.5f;
     void OnTriggerEnter2D(Collider2D collision)
     {
         if(collision.tag == "Enemy")
         {
-
+            collision.GetComponent<Enemy>().Ginko(this,slow);
+        }
+    }
+    void OnTriggerExit2D(Collider2D collision)
+    {
+        if (collision.tag == "Enemy")
+        {
+            Enemy enemy = collision.GetComponent<Enemy>();
+            enemy.GinkoOut();
         }
     }
 }
