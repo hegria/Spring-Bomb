@@ -26,6 +26,12 @@ public class Wood : MonoBehaviour
     {
         col.enabled = false;
         spr.sprite = burn[Random.Range(0, burn.Length)];
+        SpriteRenderer[] sprchilds = GetComponentsInChildren<SpriteRenderer>();
+        for(int i =1; i<sprchilds.Length;++i)
+        {
+            sprchilds[i].enabled = false;
+        }
+
     }
 
     public void OnDestroy()
