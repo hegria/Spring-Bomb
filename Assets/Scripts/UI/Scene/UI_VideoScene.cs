@@ -21,11 +21,6 @@ public class UI_VideoScene : UI_Scene
 
     public void GotoGame(UnityEngine.Video.VideoPlayer vp)
     {
-        Invoke("GotoMainreal", 0.5f);
-    }
-
-    private void GotoMainreal()
-    {
         Managers.Scene.LoadScene(Define.Scene.Game);
     }
 

@@ -50,7 +50,7 @@ public class Character : MonoBehaviour
         Managers.Sound.Stop(Define.Sound.Bgm);
         isGameOver = true;
         //TODO
-        Invoke("NextGame", 0.5f);
+        Invoke("NextGame", 0.3f);
     }
 
     public void NextGame()
