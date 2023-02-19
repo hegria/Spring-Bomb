@@ -4,8 +4,8 @@ using UnityEngine;
 
 public class Explosion : MonoBehaviour
 {
-    public float knockBackPower = 5.0f;
-    public float sturnTime = 0.5f; 
+    float knockBackPower = 100.0f;
+    float sturnTime = 0.5f; 
 
     // Start is called before the first frame update
     void Start()
@@ -37,7 +37,8 @@ public class Explosion : MonoBehaviour
             }
             else if (collision.tag == "Enemy")
             {
-                collision.GetComponent<Enemy>().KnockBack(transform, knockBackPower, sturnTime);
+                Debug.Log("Ouch");
+                collision.GetComponent<Enemy>().KnockBack(transform.position, knockBackPower, sturnTime);
             }
         }
     }

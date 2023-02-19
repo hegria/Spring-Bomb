@@ -50,13 +50,18 @@ public class Enemy : MonoBehaviour
 
     }
 
-    public void KnockBack(Transform target, float knockBackPower, float sturnTime)
+    public void KnockBack(Vector3 target, float knockBackPower, float sturnTime)
     {
         EnemyState = State.KnockBack;
         //spr.sprite = Sprite[1];
-        rigidbody.AddForce((target.position - transform.position).normalized * knockBackPower * Time.deltaTime);
-        Invoke("SetNormal", sturnTime);
+        rigidbody.velocity = Vector2.zero;
+        float sturnt = sturnTime;
+        if (EnemyType != 1)
+            sturnt *= 0.5f;
+        rigidbody.AddForce((transform.position - target).normalized * knockBackPower);
+        Invoke("SetNormal", sturnt);
     }
+
     public void ChestNut(float ChestNutTime)
     {
         EnemyState = State.ChestNut;
