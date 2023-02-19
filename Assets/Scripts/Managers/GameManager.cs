@@ -13,7 +13,9 @@ public class GameManager
     public GameObject Bombs;
 
     public int Woodnum;
-    public int Enemynum;
+    public int Enemy1num;
+    public int Enemy2num;
+    public int Enemy3num;
 
     public int brokenWood;
 
@@ -41,7 +43,10 @@ public class GameManager
     {
         Score = 0;
         Woodnum = 0;
-        Enemynum = 0;
+        Enemy1num = 0;
+        Enemy2num = 0;
+        Enemy3num = 0;
+        brokenWood = 0;
 
         Grounds = GameObject.Find("Grounds");
         Woods = GameObject.Find("Woods");

@@ -5,6 +5,8 @@ using UnityEngine;
 public class GameScene : BaseScene
 {
 
+    
+
     [SerializeField]
     float genRadius = 10f;
 
@@ -21,6 +23,8 @@ public class GameScene : BaseScene
         GenEnemyForce(1);
         GenEnemyForce(1);
         GenEnemyForce(1);
+
+        Managers.Game.Enemy1num = 3;
 
         Managers.Sound.Play($"Main", Define.Sound.Bgm);
 
@@ -66,6 +70,21 @@ public class GameScene : BaseScene
             }
             GameObject go = Managers.Resource.Instantiate($"Enemy/Enemy{enemynum}", Managers.Game.Enemys.transform);
             go.GetComponent<Enemy>().Init(enemynum);
+
+            switch(enemynum)
+            {
+                case 1:
+                    Managers.Game.Enemy1num++;
+                    break;
+                case 2:
+                    Managers.Game.Enemy2num++;
+
+                    break;
+                case 3:
+                    Managers.Game.Enemy3num++;
+
+                    break;
+            }
 
             go.transform.position = new Vector3(Point.x, Point.y);
 

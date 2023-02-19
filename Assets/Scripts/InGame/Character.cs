@@ -47,7 +47,7 @@ public class Character : MonoBehaviour
 
     public void GameOver()
     {
-        Managers.Sound.Play("End", Define.Sound.Bgm);
+        Managers.Sound.Stop(Define.Sound.Bgm);
         isGameOver = true;
         //TODO
         Invoke("NextGame", 0.5f);

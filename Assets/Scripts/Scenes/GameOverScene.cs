@@ -12,6 +12,8 @@ public class GameOverScene : BaseScene
     protected override void Init()
     {
         base.Init();
+        Managers.Sound.Play("End", Define.Sound.Bgm);
+
         Managers.UI.ShowSceneUI<UI_GameOverScene>();
 
         Managers.Input.KeyAction += GotoMain;
