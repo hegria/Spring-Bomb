@@ -9,6 +9,13 @@ public class GameOverScene : BaseScene
 
     }
 
+
+    private void Update()
+    {
+        if (Input.GetKeyDown(KeyCode.Space))
+            Managers.Scene.LoadScene(Define.Scene.Game);
+    }
+
     protected override void Init()
     {
         base.Init();
@@ -16,7 +23,6 @@ public class GameOverScene : BaseScene
 
         Managers.UI.ShowSceneUI<UI_GameOverScene>();
 
-        Managers.Input.KeyAction += GotoMain;
     }
 
     void GotoMain()
