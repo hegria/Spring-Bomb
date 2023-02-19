@@ -4,8 +4,8 @@ using UnityEngine;
 
 public class Explosion : MonoBehaviour
 {
-    float knockBackPower = 100.0f;
-    float sturnTime = 0.5f; 
+    float knockBackPower = 50.0f;
+    float sturnTime = 0.7f; 
 
     // Start is called before the first frame update
     void Start()

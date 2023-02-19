@@ -188,7 +188,7 @@ public class Character : MonoBehaviour
                 break;
             case State.ChestNut:
                 {
-                    Vector2 nextVec = inputVec.normalized * Speed *     Time.fixedDeltaTime;
+                    Vector2 nextVec = inputVec.normalized * 0.5f * Speed *     Time.fixedDeltaTime;
                     rigid.MovePosition(rigid.position + nextVec);
                 }
                 break;
