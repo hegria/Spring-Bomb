@@ -2,6 +2,7 @@ using System;
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.TextCore.LowLevel;
 using UnityEngine.TextCore.Text;
 
 
@@ -91,11 +92,37 @@ public class Character : MonoBehaviour
     }
 
 
+    public void ChestNut(float ChestNutTime)
+    {
+        G_PlayerState = State.ChestNut;
+        //spr.sprite = Sprite[2];
+        Invoke("SetNormal", ChestNutTime);
+    }
+
+    float slowamt = 0.5f;
+
+    public void Ginko(GinkoRange ginko, float slow)
+    {
+        G_PlayerState = State.Ginko;
+        //spr.sprite = Sprite[3];
+        slowamt = slow;
+
+        adj_ginko = ginko;
+    }
+
+
+    public void GinkoOut()
+    {
+        G_PlayerState = State.Normal;
+        adj_ginko = null;
+    }
+
+
+    GinkoRange adj_ginko;
+
     // Update is called once per frame
     void Update()
     {
-
-
         switch (PlayerState)
         {
             case State.Normal:
@@ -127,9 +154,24 @@ public class Character : MonoBehaviour
                 }
                 break;
             case State.ChestNut:
+                {
+                    Vector2 nextVec = inputVec.normalized * Speed *     Time.fixedDeltaTime;
+                    rigid.MovePosition(rigid.position + nextVec);
+                }
                 break;
 
             case State.Ginko:
+                {
+                   
+
+                    Vector2 nextVec = inputVec.normalized * slowamt *   Speed * Time.fixedDeltaTime;
+                    rigid.MovePosition(rigid.position + nextVec);
+                    if (adj_ginko == null)
+                    {
+                        G_PlayerState = State.Normal;
+                        adj_ginko = null;
+                    }
+                }
                 break;
 
             case State.KnockBack:

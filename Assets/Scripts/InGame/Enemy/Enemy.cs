@@ -88,6 +88,9 @@ public class Enemy : MonoBehaviour
         Invoke("SetNormal", sturnt);
     }
 
+
+
+
     public void ChestNut(float ChestNutTime)
     {
         G_EnemyState = State.ChestNut;
@@ -97,12 +100,22 @@ public class Enemy : MonoBehaviour
     }
 
     float slowamt = 0.5f;
+    GinkoRange adj_ginko;
+    
 
-    public void Ginko(float slow)
+    public void Ginko(GinkoRange ginko, float slow)
     {
         G_EnemyState = State.Ginko;
         //spr.sprite = Sprite[3];
         slowamt = slow;
+
+        adj_ginko = ginko;
+    }
+
+    public void GinkoOut()
+    {
+        G_EnemyState = State.Normal;
+        adj_ginko = null;
     }
 
 
@@ -125,6 +138,13 @@ public class Enemy : MonoBehaviour
         }
         else if (EnemyState == State.Ginko)
         {
+            if (adj_ginko == null)
+            {
+                G_EnemyState = State.Normal;
+                adj_ginko = null;
+            }
+
+
             dir = Character.character.transform.position - transform.position;
             dir.Normalize();
             rigidbody.MovePosition(rigidbody.position + speed * slowamt * dir * Time.fixedDeltaTime);
