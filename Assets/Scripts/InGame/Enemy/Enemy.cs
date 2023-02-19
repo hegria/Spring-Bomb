@@ -107,7 +107,11 @@ public class Enemy : MonoBehaviour
     }
 
 
-
+    private void OnCollisionEnter2D(Collision2D collision)
+    {
+        if (collision.gameObject.tag == "Player")
+            Character.character.GameOver();
+    }
 
     public void ChestNut(float ChestNutTime)
     {
@@ -145,7 +149,8 @@ public class Enemy : MonoBehaviour
 
     void StateMachine()
     {
-
+        if (Character.character.isGameOver)
+            return;
         if (EnemyState == State.KnockBack)
         {
 

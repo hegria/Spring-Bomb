@@ -41,8 +41,22 @@ public class Character : MonoBehaviour
         }
     }
 
+    public bool isGameOver = false;
+
     State PlayerState = State.Normal;
 
+    public void GameOver()
+    {
+        Managers.Sound.Play("End", Define.Sound.Bgm);
+        isGameOver = true;
+        //TODO
+        Invoke("NextGame", 0.5f);
+    }
+
+    public void NextGame()
+    {
+        Managers.Scene.LoadScene(Define.Scene.GameOver);
+    }
 
     public static Character character
     {
@@ -129,6 +143,9 @@ public class Character : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
+        if (isGameOver)
+            return;
+
         switch (PlayerState)
         {
             case State.Normal:
@@ -158,6 +175,9 @@ public class Character : MonoBehaviour
     }
     void FixedUpdate()
     {
+        if (isGameOver)
+            return;
+
         switch (PlayerState)
         {
             case State.Normal:
