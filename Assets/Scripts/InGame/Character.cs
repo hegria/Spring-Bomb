@@ -22,10 +22,13 @@ public class Character : MonoBehaviour
             switch (value)
             {
                 case State.Normal:
+                    Managers.Sound.Stop(Define.Sound.Movement);
+
                     GetComponent<Animator>().SetBool("Ginko", false);
                     GetComponent<Animator>().SetBool("Nut", false);
                     break;
                 case State.Ginko:
+                    Managers.Sound.Play("Coughing", Define.Sound.Movement);
                     GetComponent<Animator>().SetBool("Ginko", true);
                     break;
                 case State.ChestNut:
