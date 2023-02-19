@@ -16,6 +16,7 @@ public class Enemy : MonoBehaviour
 
     Rigidbody2D rigidbody;
 
+    
 
     public State G_EnemyState
     {
@@ -28,12 +29,23 @@ public class Enemy : MonoBehaviour
             switch (value)
             {
                 case State.Normal:
+                    GetComponent<SpriteRenderer>().flipX = false;
+                    GetComponent<Animator>().SetBool("Ginko", false);
+                    GetComponent<Animator>().SetBool("Ouch", false);
+                    GetComponent<Animator>().SetBool("Nut", false);
                     break;
                 case State.Ginko:
+                    GetComponent<Animator>().SetBool("Ginko", true);
+                    GetComponent<SpriteRenderer>().flipX = false;
+
                     break;
                 case State.ChestNut:
+                    GetComponent<SpriteRenderer>().flipX = false;
+                    GetComponent<Animator>().SetBool("Nut", true);
+
                     break;
                 case State.KnockBack:
+                    GetComponent<Animator>().SetBool("Ouch", true);
                     break;
             }
 
@@ -84,6 +96,12 @@ public class Enemy : MonoBehaviour
         float sturnt = sturnTime;
         if (EnemyType != 1)
             sturnt *= 0.5f;
+
+        if((transform.position - target).x >=0)
+        {
+            GetComponent<SpriteRenderer>().flipX = true;
+        }
+
         rigidbody.AddForce((transform.position - target).normalized * knockBackPower);
         Invoke("SetNormal", sturnt);
     }

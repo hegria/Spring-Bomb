@@ -22,10 +22,14 @@ public class Character : MonoBehaviour
             switch (value)
             {
                 case State.Normal:
+                    GetComponent<Animator>().SetBool("Ginko", false);
+                    GetComponent<Animator>().SetBool("Nut", false);
                     break;
                 case State.Ginko:
+                    GetComponent<Animator>().SetBool("Ginko", true);
                     break;
                 case State.ChestNut:
+                    GetComponent<Animator>().SetBool("Nut", true);
                     break;
                 case State.KnockBack:
                     break;
