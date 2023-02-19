@@ -16,6 +16,8 @@ public class GameScene : BaseScene
 
     void Start()
     {
+        Managers.Game.GameInit();
+
         GenEnemyForce(1);
         GenEnemyForce(1);
         GenEnemyForce(1);

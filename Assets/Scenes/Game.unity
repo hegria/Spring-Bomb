@@ -1520,7 +1520,6 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   genRadius: 10
-  BGMnum: 1
 --- !u!4 &495480824
 Transform:
   m_ObjectHideFlags: 0
@@ -4715,6 +4714,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: c231191eca0d4de44829d4855f3fbfc7, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  isGameOver: 0
   rigid: {fileID: 0}
   inputVec: {x: 0, y: 0}
   Speed: 2

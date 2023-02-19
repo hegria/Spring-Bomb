@@ -24,23 +24,36 @@ public class GameManager
 
     public void Init()
     {
+        UnitInfo = CSVReader.Read("Unit");
+        BombInfo = CSVReader.Read("Bomb");
+        TreeInfo = CSVReader.Read("Tree");
+    }
+
+    public void Clear()
+    {
+        Grounds = null;
+        Woods = null;
+        Enemys = null;
+        Bombs = null;
+    }
+
+    public void GameInit()
+    {
         Score = 0;
+        Woodnum = 0;
+        Enemynum = 0;
 
         Grounds = GameObject.Find("Grounds");
         Woods = GameObject.Find("Woods");
         Enemys = GameObject.Find("Enemys");
         Bombs = GameObject.Find("Bombs");
+    }
 
-        Woodnum = 0;
-        Enemynum = 0;
-        UnitInfo = CSVReader.Read("Unit");
-        BombInfo = CSVReader.Read("Bomb");
-        TreeInfo = CSVReader.Read("Tree");
-}
     public void OnUpdate()
     {
 
     }
+
 
 
     

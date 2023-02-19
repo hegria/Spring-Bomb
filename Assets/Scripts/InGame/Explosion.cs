@@ -27,7 +27,7 @@ public class Explosion : MonoBehaviour
         if (collision != null) { 
             if (collision.tag == "Player")
             {
-                //collision.GetComponent<Character>().Die();
+                collision.GetComponent<Character>().GameOver();
             }
             else if (collision.tag == "Wood")
             {
