@@ -98,6 +98,10 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: a9d63253be172e14b83e27836630a043, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  sprites:
+  - {fileID: 21300000, guid: f66355640c078604fbe0e434eb2ff9ef, type: 3}
+  - {fileID: 21300000, guid: f255d89d575feb04690fe7371512406c, type: 3}
+  ChestNutTime: 1
 --- !u!58 &5904581237575952699
 CircleCollider2D:
   m_ObjectHideFlags: 0

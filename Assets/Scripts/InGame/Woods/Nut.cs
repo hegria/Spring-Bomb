@@ -4,6 +4,14 @@ using UnityEngine;
 
 public class Nut : MonoBehaviour
 {
+
+    public Sprite[] sprites;
+    
+    private void Start()
+    {
+        GetComponent<SpriteRenderer>().sprite = sprites[Random.Range(0, sprites.Length)];
+    }
+
     public float ChestNutTime = 1;
     void OnTriggerEnter2D(Collider2D collision)
     {

@@ -7,7 +7,7 @@ public class Wood : MonoBehaviour
     protected BoxCollider2D col;
     protected SpriteRenderer spr;
     public Sprite[] img;
-    public Sprite burn;
+    public Sprite[] burn;
     
 
     void Awake()
@@ -25,7 +25,7 @@ public class Wood : MonoBehaviour
     public virtual void OnBoom()
     {
         col.enabled = false;
-        spr.sprite = burn;
+        spr.sprite = burn[Random.Range(0, burn.Length)];
     }
 
     public void OnDestroy()
