@@ -12,7 +12,7 @@ public class GameOverScene : BaseScene
     protected override void Init()
     {
         base.Init();
-        Managers.Sound.Play("End", Define.Sound.Bgm);
+        Managers.Sound.Play("End", Define.Sound.Bgm, volumn:1.2f);
 
         Managers.UI.ShowSceneUI<UI_GameOverScene>();
 
