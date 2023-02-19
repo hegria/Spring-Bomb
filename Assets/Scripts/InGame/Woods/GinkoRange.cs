@@ -7,8 +7,10 @@ public class GinkoRange : MonoBehaviour
     public float slow = 0.5f;
     void OnTriggerEnter2D(Collider2D collision)
     {
+        Debug.Log("??");
         if(collision.tag == "Enemy")
         {
+            
             collision.GetComponent<Enemy>().Ginko(this,slow);
         }
         if(collision.tag == "Player")
