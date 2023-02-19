@@ -130,11 +130,11 @@ public class Character : MonoBehaviour
                 inputVec.y = Input.GetAxisRaw("Vertical");
                 break;
             case State.ChestNut:
-                inputVec.x = Input.GetAxisRaw("Horizontal");
-                inputVec.y = Input.GetAxisRaw("Vertical");
                 break;
 
             case State.Ginko:
+                inputVec.x = Input.GetAxisRaw("Horizontal");
+                inputVec.y = Input.GetAxisRaw("Vertical");
                 break;
         }
         for (int i = 0; i < 3; i++)
