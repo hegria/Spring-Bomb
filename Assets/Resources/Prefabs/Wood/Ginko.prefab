@@ -11,7 +11,7 @@ GameObject:
   - component: {fileID: 9071249284380062848}
   - component: {fileID: 9071249284380062851}
   - component: {fileID: 390595123}
-  - component: {fileID: -1618962996882082162}
+  - component: {fileID: 1366802715454901328}
   m_Layer: 0
   m_Name: Ginko
   m_TagString: Wood
@@ -113,7 +113,7 @@ BoxCollider2D:
   serializedVersion: 2
   m_Size: {x: 0.829232, y: 0.8780227}
   m_EdgeRadius: 0
---- !u!114 &-1618962996882082162
+--- !u!114 &1366802715454901328
 MonoBehaviour:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
@@ -122,7 +122,7 @@ MonoBehaviour:
   m_GameObject: {fileID: 9071249284380062850}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 42a21b908984f8f4987cc57f54cc0f73, type: 3}
+  m_Script: {fileID: 11500000, guid: 09c17a94e6fa77948ae26aacb5779fed, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
   img:

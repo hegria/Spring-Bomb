@@ -96,6 +96,8 @@ public class GameScene : BaseScene
             }
         }
         GameObject go = Managers.Resource.Instantiate($"Enemy/Enemy{enemynum}", Managers.Game.Enemys.transform);
+        go.GetComponent<Enemy>().Init(enemynum);
+
 
         go.transform.position = new Vector3(Point.x, Point.y);
     }

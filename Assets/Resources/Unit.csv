@@ -1,5 +1,5 @@
 Index,Name,Speed,Spawn,Term
 0,Char,1,-1,-1
-1,eco,0.95,0,3
-2,Police,1,30,10
-3,MovePolice,1.1,50,20
+1,eco,0.75,0,3
+2,Police,0.8,30,10
+3,MovePolice,0.9,50,20
