@@ -17,8 +17,8 @@ public class Spring : MonoBehaviour
         }
         else if (Woodnum <=10)
         {
-            //go = Managers.Resource.Instantiate("Wood/Ginko", Managers.Game.Woods.transform);
-            go = Managers.Resource.Instantiate("Wood/ChestNut", Managers.Game.Woods.transform);
+            go = Managers.Resource.Instantiate("Wood/Ginko", Managers.Game.Woods.transform);
+            //go = Managers.Resource.Instantiate("Wood/ChestNut", Managers.Game.Woods.transform);
 
         }
         else

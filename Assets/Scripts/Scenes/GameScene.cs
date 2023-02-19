@@ -13,8 +13,6 @@ public class GameScene : BaseScene
         
     }
 
-    // Start is called before the first frame update
-    public int BGMnum = 1;
 
     void Start()
     {
@@ -22,7 +20,7 @@ public class GameScene : BaseScene
         GenEnemyForce(1);
         GenEnemyForce(1);
 
-        Managers.Sound.Play($"Main{BGMnum}", Define.Sound.Bgm);
+        Managers.Sound.Play($"Main", Define.Sound.Bgm);
 
         StartCoroutine("GenEnemy", 1);
         StartCoroutine("GenEnemy", 2);
